@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var welcomeTitle: String = ""
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Text(welcomeTitle)
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .onAppear(perform: {
+                #if DEBUG
+                welcomeTitle = "Debug Mode"
+                #else
+                welcomeTitle = "Release Mode"
+                #endif
+            })
     }
 }
 
